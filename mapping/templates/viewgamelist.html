@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <script
+    			  src="https://code.jquery.com/jquery-3.2.1.js"
+    			  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    			  crossorigin="anonymous"></script>
+
+            <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.get("/viewgamelist/", function(data, status){
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+        });
+        </script> -->
+
+  </head>
+  <body>
+    <h3>List of games we are offering</h3>
+    <a href="/newgame/"><button>ADD GAME</button></a>
+    <a href="/editgame/"><button>DELETE GAME</button></a>
+    <a href="/editgamelist/"><button>EDIT GAME</button></a>
+    <a href="/viewgame/"><button>VIEW ATHLETE OF GAME</button></a>
+
+    <ul style="list-style-type:disc">
+    {% for i in context %}
+    <!-- <li><a href='editbyurl/?id={{i.id}}'>{{i}},(no. of players:{{i.number_of_players}})</a> </li> -->
+    <li><a href='/editgamebyurl/{{i.id}}'>{{i}},(no. of players:{{i.number_of_players}})</a>
+    <a href='/deletegame/{{i.id}}'><button>Delete</button></a> </li>
+
+    <!-- <li>{{i}} <button onclick="deleteButton(this)">DELETE GAME</button></li> -->
+
+    {% endfor %}
+  </ul>
+
+
+  </body>
+</html>
+<!-- <script>
+function deleteButton(th){
+  var dataSend=$(th).closest('li').children().eq(0).val();
+
+$.ajax({
+  url:'/viewgamelist/',
+  type:'POST',
+  data:{name:dataSend}
+});
+console.log("alert");
+}
+</script> -->
+
+<!-- <script>
+$(function () {
+    $('button').on('click', function () {
+        var Status = $(this).closest('li').children().eq(0).val();
+        $.ajax({
+            url: '/editgame/',
+            data: {
+                t
+                Status: Status
+            },
+
+        });
+    });
+});
+
+</script> -->

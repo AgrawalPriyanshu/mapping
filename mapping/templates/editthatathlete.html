@@ -1,0 +1,20 @@
+<a href="/manytomany/"><button>BACK</button></a>
+<h1>This is an example of many to many mapping</h1>
+<form  action="/changeathletedetail/" method="POST">
+
+  <h3>Fill the details of Game</h3>
+    id:<input readonly="readonly" name="athlete_id" value={{id}} /><br>
+    name : <input id="Name" type="text" name="athlete_name" value={{name}} /><br>
+    age: <input id="numberOfPlayers" type="text" name="age" value={{age}} /><br>
+    <h3>games registered</h3>
+    <ul style="list-style-type:disc">
+    {% for j in game_list %}
+      <li>{{j}}</li>
+      {% endfor %}
+    </ul>  
+    <h3>list of games:</h3>
+    {% for i in full_game_list %}
+    <input type="checkbox" name="sport" value={{i.id}}>{{i}}<br>
+    {% endfor %}
+    <input type="submit" value="Save Changes" />
+</form>

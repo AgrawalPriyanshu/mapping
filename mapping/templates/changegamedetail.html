@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/manytomany/"><button>BACK</button></a>
+    <h2>Details Saved</h2>
+    <h3>New game list:</h3>
+    <ul style="list-style-type:disc">
+    {% for i in context %}
+    <li>{{i}},(no. of players:{{i.number_of_players}}) </li>
+
+    <!-- <li>{{i}} <button onclick="deleteButton(this)">DELETE GAME</button></li> -->
+
+    {% endfor %}
+  </ul>
+
+  </body>
+</html>

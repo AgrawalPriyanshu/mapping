@@ -1,0 +1,31 @@
+<h1>This is an example of one to one mapping</h1>
+  <p>There are two table one of car and one of its Owner each car has particular onwer<p>
+
+
+  <style type="text/css">
+.topcorner{
+ position:absolute;
+ top:0;
+ right:0;
+}
+</style>
+  <div class="topcorner"><a href="/onetoone/"><button>BACK</button></a></div>
+<form  action="/onetooneinsertoptions/" method="POST">
+  <h3>Fill the details of car</h3>
+    car name : <input id="carName" type="text" name="car_name" /><br>
+    car no : <input id="carNumber" type="text" name="car_number"/><br>
+  <h3>Fill the details of its owner</h3>
+    owner name : <input id="person" type="text" name="full_name"/><br>
+    owner aadhar no : <input id="adhaar" type="text" name="adhaar_number"/><br>
+    <input type="submit" value="Submit" />
+</form>
+{% if status %}
+{{message}}
+{% endif %}
+<!-- <h3> Select the car number and we will show you its details</h3> -->
+
+<!-- <select name="car">
+  {% for car_number in success %}
+    <option value=car_number.id>{{car_number.car_number}}</option>
+  {% endfor %}
+</select> -->

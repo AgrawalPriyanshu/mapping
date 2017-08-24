@@ -1,0 +1,33 @@
+<a href="/manytomany/"><button>BACK</button></a>
+
+
+
+  <style type="text/css">
+  .topcorner{
+  position:absolute;
+  top:0;
+  right:0;
+  }
+  </style>
+  <div class="topcorner"><a href="/"><button>HOME</button></a></div>
+
+<form  action="/newathlete/" method="POST">
+
+  <h3>Fill the details of Athlete</h3>
+    athlete name : <input id="athleteName" type="text" name="athlete_name" /><br>
+    age : <input id="age" type="text" name="age"/><br>
+    <h4>select game</h4>
+    {% for i in success %}
+    <input type="checkbox" name="sport" value={{i.id}}/> {{i.name}}<br>
+    {% endfor %}
+    <input type="submit" value="Submit" />
+</form>
+{{message}}
+
+<!-- <h3> Select the car number and we will show you its details</h3> -->
+
+<!-- <select name="car">
+  {% for car_number in success %}
+    <option value=car_number.id>{{car_number.car_number}}</option>
+  {% endfor %}
+</select> -->

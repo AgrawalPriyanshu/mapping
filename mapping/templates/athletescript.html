@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script
+          src="https://code.jquery.com/jquery-3.2.1.js"
+          integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+          crossorigin="anonymous"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+  <a href="/manytomany/"><button>BACK</button></a>
+
+
+
+  <input type="text" id="apiinput" name="APIsearch" placeholder="type your API.....">
+  <button  onclick="apifunction()">Submit</button>
+
+
+<h2>Registered Athletes</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search in List.." title="Type in a name">
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:10%;"></th>
+    <th style="width:20%;"></th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;"></th>
+
+  </tr>
+  <!-- {% for i in success %}
+  <tr>
+    <td>{{i}}</td>
+    <td><button>Delete</button></td>
+    <td><button>Edit</button></td>
+  </tr>
+  {% endfor %} -->
+
+</table>
+
+<script>
+function apifunction()
+{
+  var input=document.getElementById("apiinput").value;
+  //console.log(input);
+  var xhr=new XMLHttpRequest();
+      xhr.open("GET",input,true);
+      xhr.send();
+      xhr.addEventListener("readystatechange",processRequest,false);
+      xhr.onreadystatechange=processRequest;
+      function processRequest(e)
+      {
+      if(xhr.readyState==4 && xhr.status==200)
+        {
+            var response = JSON.parse(xhr.responseText);
+            //alert(response.length);
+            var i;
+            for(i=0;i<response.length;i++)
+            {
+              var table=document.getElementById("myTable");
+              var row=table.insertRow(i);
+              var cell1=row.insertCell(0);
+              var cell2=row.insertCell(1);
+              var cell3=row.insertCell(2);
+              var cell4=row.insertCell(3);
+              var cell5=row.insertCell(4);
+              cell1.innerHTML=response[i].id;
+              cell2.innerHTML=response[i].athlete_name;
+              cell3.innerHTML=response[i].age;
+              var id=response[i].id;
+              alert(id);
+              cell4.innerHTML="<input type='button' onclick='deleteFunction("+id+")' value='delete'/>";
+              cell5.innerHTML="<input type='button' onclick='editFunction("+id+")' value='edit'/>";
+
+            }
+        }
+      }
+
+}
+function deleteFunction(id)
+{
+  alert("hjh");
+  alert(id);
+  $.ajax({
+    url:'http://localhost:8000/athleteurl/'+id+'/',
+    type:'DELETE',
+  });
+}
+function editFunction(id)
+{
+  alert("kjnjk");
+}
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

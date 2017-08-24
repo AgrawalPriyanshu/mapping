@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <th>Athlete Table Id</th>
+    <th>Athlete Name</th>
+    <th>Age</th>
+    <!-- <th>Game ID</th>
+    <th>Game Name</th>
+    <th>Number Of Players</th> -->
+  </tr>
+    {% for i in success %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.athlete_name}}</td>
+        <td>{{i.age}}</td>
+      </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/manytomany/"><button>BACK</button></a>
+    <h2>Details Saved</h2>
+    <h3>New Athlete Detail:</h3>
+    {{name}}<br>
+    {{age}}<br>
+    <ul style="list-style-type:disc">
+    {% for i in games %}
+    <li>{{i}} </li>
+
+    <!-- <li>{{i}} <button onclick="deleteButton(this)">DELETE GAME</button></li> -->
+
+    {% endfor %}
+  </ul>
+
+  </body>
+</html>

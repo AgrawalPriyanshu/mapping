@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h3>Select the athlete to be edited</h3>
+      <form action="/editthatathlete/" method=POST>
+        {% for i in context %}
+        <input type="radio" name="player" value={{i.id}}>{{i}},(age:{{i.age}})<br>
+        {% endfor %}
+        <input type="submit" value="submit" >
+      </form>
+
+  </body>
+</html>

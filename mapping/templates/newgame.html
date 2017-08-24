@@ -1,0 +1,22 @@
+<a href="/manytomany/"><button>BACK</button></a>
+<h1>This is an example of many to many mapping</h1>
+<form  action="/newgame/" method="POST">
+
+  <h3>Fill the details of Game</h3>
+    name : <input id="Name" type="text" name="name" /><br>
+    numberOfPlayers: <input id="numberOfPlayers" type="text" name="number_of_players"/><br>
+    <input type="submit" value="Submit" />
+</form>
+<h3>List of added Games</h3>
+<ul style="list-style-type:disc">
+{% for i in context %}
+<li>{{i}}</li>
+{% endfor %}
+</ul>
+<!-- <h3> Select the car number and we will show you its details</h3> -->
+
+<!-- <select name="car">
+  {% for car_number in success %}
+    <option value=car_number.id>{{car_number.car_number}}</option>
+  {% endfor %}
+</select> -->
